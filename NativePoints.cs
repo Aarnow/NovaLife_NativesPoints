@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
 
 namespace NativePoints
@@ -138,16 +137,16 @@ namespace NativePoints
 
         private void InitNativePoints(Player player)
         {
-            Console.WriteLine("InitNativePoints !");
-            Console.WriteLine($"{AmboisePoints.Count}");
-
             foreach (NCheckpoint cp in Nova.server.checkpoints)
             {
                 foreach (var point in Nova.mapId == 0 ? AmboisePoints : SaintBranchPoints)
                 {
                     if (isNativeCheckpoint(cp, point.VPosition, 0.01f))
                     {
-                        player.setup.TargetDestroyCheckpoint(cp.checkpointId);
+                        if (!point.IsActive)
+                        {
+                            player.setup.TargetDestroyCheckpoint(cp.checkpointId);
+                        }
                     }
                 }
             }
