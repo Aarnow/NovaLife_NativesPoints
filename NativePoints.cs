@@ -25,26 +25,6 @@ namespace NativePoints
         {
             PluginInformations = new PluginInformations(AssemblyHelper.GetName(), "1.0.0", "Aarnow");
             isAmboise = Nova.mapId == 0 ? true : false;
-
-            /*new SChatCommand("/tpdebug",
-                "tpdebug",
-                "/tpdebug pos",
-                ((player, arg) =>
-                {
-                    if (player.IsAdmin && arg[0] != null && arg[1] != null && arg[2] != null)
-                    {
-                        if(float.TryParse(arg[0], out float x))
-                        {
-                            if (float.TryParse(arg[1], out float y))
-                            {
-                                if (float.TryParse(arg[2], out float z))
-                                {
-                                    player.setup.TargetSetPosition(new Vector3(x, y, z));
-                                }
-                            }
-                        }
-                    }
-                })).Register();*/
         }
 
         public override void OnPluginInit()
